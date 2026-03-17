@@ -1,0 +1,88 @@
+<svg width="640" height="320" viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      text { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; }
+      .bg-main   { fill: #131311; }
+      .bg-panel  { fill: #1C1C1A; }
+      .t-muted   { fill: #888880; }
+      .t-class   { fill: #5DCAA5; }
+      .t-tag     { fill: #D4D2CC; }
+      .t-attr    { fill: #888880; }
+      .gap-badge { fill: #1C1C1A; stroke: rgba(255,255,255,0.13); }
+      .gap-text  { fill: #888880; }
+      .footer    { fill: #555550; }
+      @media (prefers-color-scheme: light) {
+        .bg-main   { fill: #F7F6F2; }
+        .bg-panel  { fill: #EEEDE9; }
+        .t-muted   { fill: #6A6A64; }
+        .t-class   { fill: #0F6E56; }
+        .t-tag     { fill: #1C1C1A; }
+        .t-attr    { fill: #6A6A64; }
+        .gap-badge { fill: #E8E7E3; stroke: rgba(0,0,0,0.12); }
+        .gap-text  { fill: #6A6A64; }
+        .footer    { fill: #9E9E98; }
+      }
+    </style>
+    <clipPath id="cl"><rect x="24"  y="60" width="256" height="220" rx="0"/></clipPath>
+    <clipPath id="cr"><rect x="360" y="60" width="256" height="220" rx="0"/></clipPath>
+  </defs>
+
+  <rect width="640" height="320" class="bg-main"/>
+
+  <!-- Left panel shell -->
+  <rect x="24" y="24" width="256" height="256" class="bg-panel" rx="8"/>
+  <rect x="24" y="24" width="256" height="256" fill="none" stroke="rgba(255,255,255,0.09)" stroke-width="1" rx="8"/>
+  <line x1="24" y1="60" x2="280" y2="60" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+  <text x="40" y="46" class="t-muted" font-size="10" font-weight="600" style="text-transform:uppercase;letter-spacing:0.09em;">SOURCE FILE</text>
+
+  <!-- Left content (clipped) -->
+  <g clip-path="url(#cl)" style="font-family:'SF Mono','Fira Code','Fira Mono','Consolas',monospace;">
+    <text x="40" y="88"  font-size="11.5" class="t-attr">// JSX</text>
+    <text x="40" y="112" font-size="13"><tspan class="t-tag">&lt;</tspan><tspan class="t-class" font-weight="500">Menu</tspan><tspan class="t-tag">&gt;</tspan></text>
+    <text x="54" y="132" font-size="13"><tspan class="t-tag">&lt;</tspan><tspan class="t-class" font-weight="500">Menu.Item</tspan><tspan class="t-tag"> key=</tspan><tspan class="t-attr">"roles"</tspan><tspan class="t-tag">&gt;</tspan></text>
+    <text x="68" y="152" font-size="13"><tspan class="t-tag">&lt;</tspan><tspan class="t-class" font-weight="500">UserOutlined</tspan><tspan class="t-tag"> /&gt;</tspan></text>
+    <text x="54" y="172" font-size="13"><tspan class="t-tag">&lt;/</tspan><tspan class="t-class" font-weight="500">Menu.Item</tspan><tspan class="t-tag">&gt;</tspan></text>
+    <text x="40" y="192" font-size="13"><tspan class="t-tag">&lt;/</tspan><tspan class="t-class" font-weight="500">Menu</tspan><tspan class="t-tag">&gt;</tspan></text>
+    <line x1="40" y1="210" x2="264" y2="210" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+    <text x="40" y="228" font-size="11" class="t-attr">// AI finds in SCSS:</text>
+    <text x="40" y="250" font-size="13"><tspan class="t-class">.ant-menu-item</tspan><tspan class="t-tag"> { ... }</tspan></text>
+  </g>
+
+  <!-- Right panel shell -->
+  <rect x="360" y="24" width="256" height="256" class="bg-panel" rx="8"/>
+  <rect x="360" y="24" width="256" height="256" fill="none" stroke="rgba(255,255,255,0.09)" stroke-width="1" rx="8"/>
+  <line x1="360" y1="60" x2="616" y2="60" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+  <text x="376" y="46" class="t-muted" font-size="10" font-weight="600" style="text-transform:uppercase;letter-spacing:0.09em;">LIVE DOM</text>
+
+  <!-- Right content (clipped) -->
+  <g clip-path="url(#cr)" style="font-family:'SF Mono','Fira Code','Fira Mono','Consolas',monospace;">
+    <text x="376" y="88" font-size="11" class="t-attr">// DevTools Elements</text>
+    <text x="376" y="110" font-size="11"><tspan class="t-tag">&lt;ul class=</tspan><tspan class="t-class">"ant-dropdown-menu</tspan></text>
+    <text x="376" y="125" font-size="11"><tspan class="t-class">  ant-dropdown-menu-root</tspan></text>
+    <text x="376" y="140" font-size="11"><tspan class="t-class">  ant-dropdown-menu-vertical</tspan><tspan class="t-tag">"&gt;</tspan></text>
+    <text x="390" y="158" font-size="11"><tspan class="t-tag">&lt;li class=</tspan><tspan class="t-class">"ant-dropdown-menu-item"</tspan><tspan class="t-tag">&gt;</tspan></text>
+    <text x="404" y="176" font-size="11"><tspan class="t-tag">&lt;span class=</tspan><tspan class="t-class">"ant-dropdown-</tspan></text>
+    <text x="404" y="191" font-size="11"><tspan class="t-class">  menu-title-content</tspan><tspan class="t-tag">"&gt;</tspan></text>
+    <text x="418" y="209" font-size="11"><tspan class="t-tag">&lt;div class=</tspan><tspan class="t-class">"ant-dropdown-</tspan></text>
+    <text x="418" y="224" font-size="11"><tspan class="t-class">  menu-item-container</tspan><tspan class="t-tag">"&gt;</tspan></text>
+  </g>
+
+  <!-- Gap zone -->
+  <line x1="282" y1="40" x2="282" y2="264" stroke="rgba(255,255,255,0.07)" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="358" y1="40" x2="358" y2="264" stroke="rgba(255,255,255,0.07)" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- Runtime badge -->
+  <rect x="293" y="117" width="54" height="22" class="gap-badge" rx="4" stroke-width="1"/>
+  <text x="320" y="132" class="gap-text" font-size="9.5" font-weight="500" text-anchor="middle" style="letter-spacing:0.02em;">runtime</text>
+
+  <!-- Arrow -->
+  <line x1="292" y1="152" x2="348" y2="152" stroke="#5DCAA5" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <path d="M343 147 L351 152 L343 157" fill="none" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ≠ -->
+  <text x="320" y="178" class="t-muted" font-size="17" text-anchor="middle">≠</text>
+
+  <!-- Footer -->
+  <text x="320" y="298" class="footer" font-size="11" text-anchor="middle" style="letter-spacing:0.01em;">browser-inspector-mcp bridges this gap</text>
+
+</svg>

@@ -4,6 +4,10 @@
 
 Before your AI writes CSS, let it see what's actually in the browser — the real rendered class names, the full cascade of rules, what's winning and why. Same data a human gets from DevTools. Zero manual copy-paste.
 
+**[Full docs and visuals →](https://betson-uni.github.io/browser-inspector-mcp)**
+
+<img src="https://betson-uni.github.io/browser-inspector-mcp/web/gap-visual.svg" alt="Source file vs live DOM — the class names don't match" width="640">
+
 ---
 
 <details>

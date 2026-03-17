@@ -178,6 +178,29 @@
       font-style: italic;
     }
 
+    .hero-cta {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 10px 22px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .hero-cta:hover { border-color: var(--muted); color: var(--text); }
+
+    .gap-visual {
+      display: block;
+      width: 100%;
+      max-width: 640px;
+      height: auto;
+      margin: 32px 0 0;
+      border-radius: 8px;
+    }
+
     .hero-sub {
       font-size: 1.075rem;
       color: var(--muted);
@@ -775,6 +798,7 @@
     <div class="hero">
       <h1 class="hero-title">Before your AI writes CSS,<br>let it <em>see</em> the browser.</h1>
       <p class="hero-sub">The same CSS visibility you get in DevTools — rendered class names, the full cascade, what's winning and why — available to your AI automatically.</p>
+      <a class="hero-cta" href="#get-started">Get started</a>
     </div>
 
     <!-- Problem -->
@@ -783,118 +807,8 @@
       <p>You ask your AI to fix a styling issue. It reads the source files, writes a change, applies it. You check the browser. Still wrong. A few more rounds. Eventually you open DevTools yourself, copy the element, paste it back into the chat — and only then does the AI understand what it was working with.</p>
       <p>Modern component libraries generate their own class names at runtime. Your JSX says <code>&lt;Menu&gt;</code>. The browser renders <code>ant-dropdown-menu-item-container</code>. The AI writes CSS for what it found in the source. The rule never applies.</p>
 
-      <div class="analogy">
-        <p>Reading the recipe isn't the same as tasting the dish. You hand a chef a recipe. They follow it precisely — every measurement, every step. But the kitchen has changed since it was written. New ingredients, different technique. The dish comes out wrong. The chef re-reads the recipe. Still wrong.</p>
-        <p>What they needed to do was taste it first.</p>
-        <p>The inspector is the tasting step. Before adding more seasoning, you put the spoon to your lips.</p>
-      </div>
-
-      <button class="show-more" id="show-more-btn" onclick="toggleAnalogy(this)">Show me another example</button>
-
-      <div class="analogy-extra" id="analogy-extra">
-        <div class="analogy">
-          <p>Every adjustment is a round trip. You're seasoning from the next room. Someone else is tasting, shouting back "needs more salt." You add some, wait. "Still needs more." Back to the stove. You're holding the spoon but you can't taste the food yourself.</p>
-          <p>That round trip is you, walking to the browser and back after every change. This tool closes the loop.</p>
-        </div>
-      </div>
-      <!-- Analogy panels -->
-      <div class="ap-wrap">
-        <div class="ap-panel">
-          <div class="ap-heading">The wrong seam</div>
-          <div class="ap-body">A tailor studies the original pattern — every seam, every measurement. But the suit in front of them was made by someone else, who made modifications. The pattern is not what was built.</div>
-          <div class="ap-punchline">The inspector is the fitting room. You check what was actually built before you touch it.</div>
-        </div>
-        <div class="ap-panel">
-          <div class="ap-heading">The round trip</div>
-          <div class="ap-body">You're adjusting a TV aerial from the backyard. Someone inside is watching the picture. Every time you move it, you shout "better or worse?" and wait. Each adjustment is a round trip.</div>
-          <div class="ap-punchline">This tool is the wire. The AI checks the result itself, without you walking back and forth.</div>
-        </div>
-        <div class="ap-panel">
-          <div class="ap-heading">The wrong diagnosis</div>
-          <div class="ap-body">A doctor sees someone who looks pale and tired. Without examining them, they assume iron deficiency and prescribe accordingly. Six weeks later, nothing's changed. It was thyroid all along.</div>
-          <div class="ap-punchline">Inspect before you prescribe. The computed value is the examination.</div>
-        </div>
-      </div>
+      <img src="web/gap-visual.svg" alt="Source file vs live DOM — the class names don't match" class="gap-visual" width="640" height="320">
     </section>
-
-    <!-- Gap panel -->
-    <div class="gap-panel">
-      <div class="gap-panel-top">
-        <span class="gap-side-label">What your AI reads</span>
-        <span class="gap-ne">≠</span>
-        <span class="gap-side-label">What the browser renders</span>
-      </div>
-      <div class="gap-sides">
-        <div class="gap-side">
-          <pre class="no-copy"><code><span class="gc">// JSX source</span>
-
-<span class="gt">&lt;</span><span class="gh">Menu</span><span class="gt">&gt;</span>
-  <span class="gt">&lt;</span><span class="gh">Menu.Item</span><span class="gt"> key=</span><span class="gc">"roles"</span><span class="gt">&gt;</span>
-    <span class="gt">&lt;</span><span class="gh">UserOutlined</span><span class="gt"> /&gt;</span>
-    <span class="gt">Manage Roles</span>
-  <span class="gt">&lt;/</span><span class="gh">Menu.Item</span><span class="gt">&gt;</span>
-<span class="gt">&lt;/</span><span class="gh">Menu</span><span class="gt">&gt;</span></code></pre>
-        </div>
-        <div class="gap-rule"></div>
-        <div class="gap-side">
-          <pre class="no-copy"><code><span class="gc">// Rendered DOM</span>
-
-<span class="gt">&lt;ul class=</span><span class="gc">"</span><span class="gh">ant-dropdown-menu</span>
-<span class="gc">       ant-dropdown-menu-root</span>
-<span class="gc">       ant-dropdown-menu-vertical</span><span class="gc">"</span><span class="gt">&gt;</span>
-  <span class="gt">&lt;li class=</span><span class="gc">"</span><span class="gh">ant-dropdown-menu-item</span><span class="gc">"</span><span class="gt">&gt;</span>
-    <span class="gt">&lt;span class=</span><span class="gc">"ant-dropdown-menu-title-content"</span><span class="gt">&gt;</span>
-      <span class="gt">&lt;div class=</span><span class="gc">"</span><span class="gh">ant-dropdown-menu-item-container</span><span class="gc">"</span><span class="gt">&gt;</span>
-        <span class="gt">&lt;span class=</span><span class="gc">"anticon anticon-user"</span><span class="gt"> /&gt;</span>
-        <span class="gt">Manage Roles</span>
-      <span class="gt">&lt;/div&gt;</span>
-    <span class="gt">&lt;/span&gt;</span>
-  <span class="gt">&lt;/li&gt;</span>
-<span class="gt">&lt;/ul&gt;</span></code></pre>
-        </div>
-      </div>
-      <div class="gap-footer">
-        The AI wrote CSS for <code class="wrong">.ant-menu-item</code> — the class in the source.
-        The browser rendered <code class="right">.ant-dropdown-menu-item-container</code> at runtime.
-        The rule never applied.
-      </div>
-    </div>
-
-    <!-- Before/after flow -->
-    <div class="flow-wrap">
-      <div class="flow-col">
-        <div class="flow-col-label">Without the inspector</div>
-        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text"><strong>You describe the problem</strong></div></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">AI reads source files, finds <code>&lt;Menu&gt;</code></div></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">Writes CSS for <code>.ant-menu-item</code></div></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><div class="flow-dot bad"></div><div class="flow-text"><strong>Still wrong.</strong> Rule never applied.</div></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">You open DevTools, find the real element</div></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">Copy HTML, paste back into chat</div></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">AI tries again, now with the real DOM</div></div>
-        <div class="flow-punchline bad">Manual copy-paste closes the loop — every time.</div>
-      </div>
-      <div class="flow-col">
-        <div class="flow-col-label">With the inspector</div>
-        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text"><strong>You describe the problem</strong></div></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">AI calls <code>dom</code> — sees <code>.ant-dropdown-menu-item-container</code></div></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">Calls <code>styles</code> — reads the full cascade, finds the override</div></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">Writes the correct rule, targets the right selector</div></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">Calls <code>diff</code> — confirms the change landed</div></div>
-        <div class="flow-connector"></div>
-        <div class="flow-step"><div class="flow-dot good"></div><div class="flow-text"><strong>Done.</strong> First try.</div></div>
-        <div class="flow-punchline good">No DevTools. No copy-paste. No back-and-forth.</div>
-      </div>
-    </div>
 
     <!-- Tools -->
     <section>
@@ -1009,7 +923,7 @@
     </section>
 
     <!-- Get started -->
-    <section>
+    <section id="get-started">
       <div class="label">Get started</div>
 
       <div class="tabs">
