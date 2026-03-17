@@ -495,6 +495,243 @@
 
     .site-footer a:hover { color: var(--muted); }
 
+    /* ─── Gap panel ─── */
+
+    .gap-panel {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 56px 0;
+    }
+
+    .gap-panel-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--code-bg);
+    }
+
+    .gap-side-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .gap-ne {
+      font-size: 0.95rem;
+      color: var(--faint);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .gap-sides {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+    }
+
+    .gap-side {
+      padding: 16px 18px;
+    }
+
+    .gap-side pre {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      overflow-x: auto;
+    }
+
+    .gap-side pre code {
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .gc {
+      color: var(--faint);
+    }
+
+    .gt {
+      color: var(--code-text);
+    }
+
+    .gh {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .gap-rule {
+      background: var(--border);
+      width: 1px;
+    }
+
+    .gap-footer {
+      padding: 13px 20px;
+      border-top: 1px solid var(--border);
+      background: var(--code-bg);
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .gap-footer code {
+      font-size: 0.82em;
+      background: none;
+      padding: 0;
+      color: var(--faint);
+    }
+
+    .gap-footer code.wrong {
+      text-decoration: line-through;
+      text-decoration-color: var(--faint);
+    }
+
+    .gap-footer code.right {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    @media (max-width: 560px) {
+      .gap-sides {
+        grid-template-columns: 1fr;
+      }
+      .gap-rule {
+        width: 100%;
+        height: 1px;
+      }
+    }
+
+    /* ─── Before/after flow ─── */
+    .flow-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 56px 0;
+    }
+    .flow-col { background: var(--bg); padding: 28px 24px 32px; }
+    .flow-col-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 20px;
+    }
+    .flow-step { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 6px; }
+    .flow-step:last-child { margin-bottom: 0; }
+    .flow-connector { width: 1px; height: 14px; background: var(--border); margin-left: 6px; margin-bottom: 6px; }
+    .flow-dot {
+      width: 13px; height: 13px; border-radius: 50%;
+      border: 1.5px solid var(--border); flex-shrink: 0; margin-top: 3px;
+    }
+    .flow-dot.bad  { border-color: #c0392b; background: rgba(192,57,43,0.12); }
+    .flow-dot.good { border-color: #27ae60; background: rgba(39,174,96,0.12); }
+    .flow-text { font-size: 0.875rem; line-height: 1.5; color: var(--muted); }
+    .flow-text strong { color: var(--text); font-weight: 500; }
+    .flow-text code {
+      font-family: 'SF Mono','Fira Code',monospace; font-size: 0.78rem;
+      background: var(--code-bg); padding: 1px 5px; border-radius: 3px; color: var(--code-text);
+    }
+    .flow-punchline {
+      font-size: 0.78rem; margin-top: 20px; padding-top: 16px;
+      border-top: 1px solid var(--border); line-height: 1.5;
+    }
+    .flow-punchline.bad  { color: #c0392b; opacity: 0.8; }
+    .flow-punchline.good { color: #27ae60; opacity: 0.9; }
+
+    /* ─── Workflow sequence ─── */
+    .wf-wrap { padding: 16px 0 32px; }
+    .wf-track { display: flex; flex-direction: column; gap: 0; }
+    .wf-step {
+      display: flex; align-items: flex-start; gap: 20px;
+      position: relative; padding-bottom: 28px;
+    }
+    .wf-step--last { padding-bottom: 0; }
+    .wf-step:not(.wf-step--last)::before {
+      content: ''; position: absolute; left: 5px; top: 14px;
+      width: 1px; bottom: 0; background: var(--border);
+    }
+    .wf-node {
+      width: 13px; height: 13px; border-radius: 50%;
+      border: 1.5px solid var(--faint); background: var(--bg);
+      flex-shrink: 0; margin-top: 2px; position: relative; z-index: 1;
+    }
+    .wf-node--done { border-color: #3a9e6e; background: rgba(39,174,96,0.15); }
+    .wf-content { flex: 1; }
+    .wf-title {
+      font-size: 0.875rem; font-weight: 500; color: var(--text); line-height: 1.4;
+    }
+    .wf-detail {
+      margin-top: 3px; font-size: 0.8rem; color: var(--muted); line-height: 1.5;
+    }
+    .wf-detail code {
+      font-family: 'SF Mono','Fira Code',monospace; font-size: 0.76rem;
+      background: var(--code-bg); padding: 1px 5px; border-radius: 3px;
+      color: var(--code-text);
+    }
+
+    /* ─── Action cards ─── */
+    .ac-card { border-top: 1px solid var(--border); overflow: hidden; }
+    .ac-card:last-child { border-bottom: 1px solid var(--border); }
+    .ac-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      padding: 16px 0; cursor: pointer; gap: 20px; user-select: none;
+    }
+    .ac-header:hover .ac-name { color: var(--text); }
+    .ac-left { display: flex; align-items: baseline; gap: 20px; flex: 1; min-width: 0; }
+    .ac-name {
+      font-family: 'SF Mono','Fira Code',monospace; font-size: 0.82rem; font-weight: 500;
+      color: var(--muted); white-space: nowrap; transition: color 0.15s; min-width: 200px;
+    }
+    .ac-name.open { color: var(--text); }
+    .ac-tagline { font-size: 0.95rem; color: var(--faint); line-height: 1.5; }
+    .ac-chevron { font-size: 0.75rem; color: var(--faint); transition: transform 0.2s; flex-shrink: 0; }
+    .ac-chevron.open { transform: rotate(180deg); }
+    .ac-body { display: none; padding: 0 0 20px; }
+    .ac-body.open { display: block; }
+    .ac-row {
+      display: grid; grid-template-columns: 90px 1fr;
+      gap: 10px 20px; margin-bottom: 8px; font-size: 0.875rem; line-height: 1.55;
+    }
+    .ac-row:last-child { margin-bottom: 0; }
+    .ac-row-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--faint); padding-top: 2px;
+    }
+    .ac-row-val { color: var(--muted); }
+    .ac-row-val code {
+      font-family: 'SF Mono','Fira Code',monospace; font-size: 0.78rem;
+      background: var(--code-bg); padding: 1px 5px; border-radius: 3px; color: var(--code-text);
+    }
+
+    /* ─── Analogy panels ─── */
+    .ap-wrap {
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 10px;
+      overflow: hidden; margin: 48px 0 0;
+    }
+    .ap-panel { background: var(--bg); padding: 24px 20px 28px; }
+    .ap-heading {
+      font-family: 'Instrument Serif', serif; font-size: 1.05rem;
+      font-weight: 400; color: var(--text); line-height: 1.25; margin-bottom: 14px;
+    }
+    .ap-body {
+      font-size: 0.855rem; color: var(--faint); font-style: italic;
+      line-height: 1.65; margin-bottom: 14px;
+    }
+    .ap-punchline {
+      font-size: 0.855rem; color: var(--muted); font-style: normal;
+      line-height: 1.6; padding-top: 14px; border-top: 1px solid var(--border);
+    }
+
     /* ─── Mobile ─── */
 
     @media (max-width: 560px) {
@@ -511,6 +748,11 @@
         grid-template-columns: 1fr;
         gap: 4px;
       }
+      .flow-wrap { grid-template-columns: 1fr; }
+      .ap-wrap { grid-template-columns: 1fr; }
+      .wf-sub { display: none; }
+      .ac-left { flex-direction: column; gap: 4px; }
+      .ac-name { min-width: unset; }
     }
   </style>
 </head>
@@ -555,29 +797,215 @@
           <p>That round trip is you, walking to the browser and back after every change. This tool closes the loop.</p>
         </div>
       </div>
+      <!-- Analogy panels -->
+      <div class="ap-wrap">
+        <div class="ap-panel">
+          <div class="ap-heading">The wrong seam</div>
+          <div class="ap-body">A tailor studies the original pattern — every seam, every measurement. But the suit in front of them was made by someone else, who made modifications. The pattern is not what was built.</div>
+          <div class="ap-punchline">The inspector is the fitting room. You check what was actually built before you touch it.</div>
+        </div>
+        <div class="ap-panel">
+          <div class="ap-heading">The round trip</div>
+          <div class="ap-body">You're adjusting a TV aerial from the backyard. Someone inside is watching the picture. Every time you move it, you shout "better or worse?" and wait. Each adjustment is a round trip.</div>
+          <div class="ap-punchline">This tool is the wire. The AI checks the result itself, without you walking back and forth.</div>
+        </div>
+        <div class="ap-panel">
+          <div class="ap-heading">The wrong diagnosis</div>
+          <div class="ap-body">A doctor sees someone who looks pale and tired. Without examining them, they assume iron deficiency and prescribe accordingly. Six weeks later, nothing's changed. It was thyroid all along.</div>
+          <div class="ap-punchline">Inspect before you prescribe. The computed value is the examination.</div>
+        </div>
+      </div>
     </section>
+
+    <!-- Gap panel -->
+    <div class="gap-panel">
+      <div class="gap-panel-top">
+        <span class="gap-side-label">What your AI reads</span>
+        <span class="gap-ne">≠</span>
+        <span class="gap-side-label">What the browser renders</span>
+      </div>
+      <div class="gap-sides">
+        <div class="gap-side">
+          <pre class="no-copy"><code><span class="gc">// JSX source</span>
+
+<span class="gt">&lt;</span><span class="gh">Menu</span><span class="gt">&gt;</span>
+  <span class="gt">&lt;</span><span class="gh">Menu.Item</span><span class="gt"> key=</span><span class="gc">"roles"</span><span class="gt">&gt;</span>
+    <span class="gt">&lt;</span><span class="gh">UserOutlined</span><span class="gt"> /&gt;</span>
+    <span class="gt">Manage Roles</span>
+  <span class="gt">&lt;/</span><span class="gh">Menu.Item</span><span class="gt">&gt;</span>
+<span class="gt">&lt;/</span><span class="gh">Menu</span><span class="gt">&gt;</span></code></pre>
+        </div>
+        <div class="gap-rule"></div>
+        <div class="gap-side">
+          <pre class="no-copy"><code><span class="gc">// Rendered DOM</span>
+
+<span class="gt">&lt;ul class=</span><span class="gc">"</span><span class="gh">ant-dropdown-menu</span>
+<span class="gc">       ant-dropdown-menu-root</span>
+<span class="gc">       ant-dropdown-menu-vertical</span><span class="gc">"</span><span class="gt">&gt;</span>
+  <span class="gt">&lt;li class=</span><span class="gc">"</span><span class="gh">ant-dropdown-menu-item</span><span class="gc">"</span><span class="gt">&gt;</span>
+    <span class="gt">&lt;span class=</span><span class="gc">"ant-dropdown-menu-title-content"</span><span class="gt">&gt;</span>
+      <span class="gt">&lt;div class=</span><span class="gc">"</span><span class="gh">ant-dropdown-menu-item-container</span><span class="gc">"</span><span class="gt">&gt;</span>
+        <span class="gt">&lt;span class=</span><span class="gc">"anticon anticon-user"</span><span class="gt"> /&gt;</span>
+        <span class="gt">Manage Roles</span>
+      <span class="gt">&lt;/div&gt;</span>
+    <span class="gt">&lt;/span&gt;</span>
+  <span class="gt">&lt;/li&gt;</span>
+<span class="gt">&lt;/ul&gt;</span></code></pre>
+        </div>
+      </div>
+      <div class="gap-footer">
+        The AI wrote CSS for <code class="wrong">.ant-menu-item</code> — the class in the source.
+        The browser rendered <code class="right">.ant-dropdown-menu-item-container</code> at runtime.
+        The rule never applied.
+      </div>
+    </div>
+
+    <!-- Before/after flow -->
+    <div class="flow-wrap">
+      <div class="flow-col">
+        <div class="flow-col-label">Without the inspector</div>
+        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text"><strong>You describe the problem</strong></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">AI reads source files, finds <code>&lt;Menu&gt;</code></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">Writes CSS for <code>.ant-menu-item</code></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-dot bad"></div><div class="flow-text"><strong>Still wrong.</strong> Rule never applied.</div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">You open DevTools, find the real element</div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">Copy HTML, paste back into chat</div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">AI tries again, now with the real DOM</div></div>
+        <div class="flow-punchline bad">Manual copy-paste closes the loop — every time.</div>
+      </div>
+      <div class="flow-col">
+        <div class="flow-col-label">With the inspector</div>
+        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text"><strong>You describe the problem</strong></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">AI calls <code>dom</code> — sees <code>.ant-dropdown-menu-item-container</code></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">Calls <code>styles</code> — reads the full cascade, finds the override</div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">Writes the correct rule, targets the right selector</div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-dot"></div><div class="flow-text">Calls <code>diff</code> — confirms the change landed</div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-dot good"></div><div class="flow-text"><strong>Done.</strong> First try.</div></div>
+        <div class="flow-punchline good">No DevTools. No copy-paste. No back-and-forth.</div>
+      </div>
+    </div>
 
     <!-- Tools -->
     <section>
       <div class="label">One tool, four actions</div>
-      <ul class="tools">
-        <li>
-          <span class="tool-name">browser_inspect dom</span>
-          <span class="tool-desc">Real rendered HTML — actual runtime class names and DOM structure — before the AI writes any CSS.</span>
-        </li>
-        <li>
-          <span class="tool-name">browser_inspect styles</span>
-          <span class="tool-desc">Full CSS cascade: every matched rule, where it came from, and which properties are active vs overridden.</span>
-        </li>
-        <li>
-          <span class="tool-name">browser_inspect diff</span>
-          <span class="tool-desc">Before/after style comparison. Shows exactly what changed after a CSS edit — or confirms nothing changed at all.</span>
-        </li>
-        <li>
-          <span class="tool-name">browser_inspect screenshot</span>
-          <span class="tool-desc">Cropped visual snapshot of any element, returned inline so the AI can see it.</span>
-        </li>
-      </ul>
+      <div class="ac-card">
+        <div class="ac-header" onclick="toggleActionCard(this)">
+          <div class="ac-left">
+            <span class="ac-name">browser_inspect dom</span>
+            <span class="ac-tagline">Real rendered HTML, before the AI writes any CSS</span>
+          </div>
+          <span class="ac-chevron">▾</span>
+        </div>
+        <div class="ac-body">
+          <div class="ac-row"><div class="ac-row-label">Returns</div><div class="ac-row-val">The live DOM for any selector — actual runtime class names, nesting, attributes. Not what's in your source files.</div></div>
+          <div class="ac-row"><div class="ac-row-label">Use when</div><div class="ac-row-val">Before writing any CSS. Component libraries generate class names at runtime that don't appear in source.</div></div>
+          <div class="ac-row"><div class="ac-row-label">Example</div><div class="ac-row-val"><code>action: "dom", selector: ".sidebar-menu"</code></div></div>
+        </div>
+      </div>
+      <div class="ac-card">
+        <div class="ac-header" onclick="toggleActionCard(this)">
+          <div class="ac-left">
+            <span class="ac-name">browser_inspect styles</span>
+            <span class="ac-tagline">Full CSS cascade — every rule, where it came from, what's winning</span>
+          </div>
+          <span class="ac-chevron">▾</span>
+        </div>
+        <div class="ac-body">
+          <div class="ac-row"><div class="ac-row-label">Returns</div><div class="ac-row-val">Every matched CSS rule for an element: stylesheet, line number, computed value, and whether it's active or overridden.</div></div>
+          <div class="ac-row"><div class="ac-row-label">Use when</div><div class="ac-row-val">A style change isn't showing up. Find out if your rule reached the element and what's overriding it.</div></div>
+          <div class="ac-row"><div class="ac-row-label">Example</div><div class="ac-row-val"><code>action: "styles", selector: ".btn-primary", properties: ["color", "background"]</code></div></div>
+        </div>
+      </div>
+      <div class="ac-card">
+        <div class="ac-header" onclick="toggleActionCard(this)">
+          <div class="ac-left">
+            <span class="ac-name">browser_inspect diff</span>
+            <span class="ac-tagline">Before/after comparison — confirms a change actually landed</span>
+          </div>
+          <span class="ac-chevron">▾</span>
+        </div>
+        <div class="ac-body">
+          <div class="ac-row"><div class="ac-row-label">Returns</div><div class="ac-row-val">A diff of computed styles between two snapshots. First call saves the baseline. Second call — after an edit — shows exactly what changed.</div></div>
+          <div class="ac-row"><div class="ac-row-label">Use when</div><div class="ac-row-val">After making a CSS change. Verifies the rule applied — or tells you definitively that nothing changed.</div></div>
+          <div class="ac-row"><div class="ac-row-label">Example</div><div class="ac-row-val"><code>action: "diff", selector: ".card-header"</code></div></div>
+        </div>
+      </div>
+      <div class="ac-card">
+        <div class="ac-header" onclick="toggleActionCard(this)">
+          <div class="ac-left">
+            <span class="ac-name">browser_inspect screenshot</span>
+            <span class="ac-tagline">Visual snapshot of any element, returned inline</span>
+          </div>
+          <span class="ac-chevron">▾</span>
+        </div>
+        <div class="ac-body">
+          <div class="ac-row"><div class="ac-row-label">Returns</div><div class="ac-row-val">A cropped screenshot of the matched element. Rendered at 1440×900 — may not match your viewport at other sizes.</div></div>
+          <div class="ac-row"><div class="ac-row-label">Use when</div><div class="ac-row-val">You want the AI to see what an element looks like, not just its computed values.</div></div>
+          <div class="ac-row"><div class="ac-row-label">Example</div><div class="ac-row-val"><code>action: "screenshot", selector: "#modal-overlay"</code></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow sequence -->
+    <section>
+      <div class="label">How it works</div>
+      <div class="wf-wrap">
+        <div class="wf-track">
+          <div class="wf-step">
+            <div class="wf-node"></div>
+            <div class="wf-content">
+              <div class="wf-title">You describe the problem</div>
+              <div class="wf-detail">"The icon isn't picking up the brand color"</div>
+            </div>
+          </div>
+          <div class="wf-step">
+            <div class="wf-node"></div>
+            <div class="wf-content">
+              <div class="wf-title">AI inspects the DOM</div>
+              <div class="wf-detail"><code>browser_inspect(action="dom", selector=".panel-header")</code> — sees real runtime class names</div>
+            </div>
+          </div>
+          <div class="wf-step">
+            <div class="wf-node"></div>
+            <div class="wf-content">
+              <div class="wf-title">AI reads the full cascade</div>
+              <div class="wf-detail"><code>browser_inspect(action="styles", selector=".panel__header-icon")</code> — sees the overriding rule and where it comes from</div>
+            </div>
+          </div>
+          <div class="wf-step">
+            <div class="wf-node"></div>
+            <div class="wf-content">
+              <div class="wf-title">AI writes the fix</div>
+              <div class="wf-detail">Targets the correct rule in the correct file — first try</div>
+            </div>
+          </div>
+          <div class="wf-step">
+            <div class="wf-node"></div>
+            <div class="wf-content">
+              <div class="wf-title">AI verifies the change landed</div>
+              <div class="wf-detail"><code>browser_inspect(action="diff", selector=".panel__header-icon")</code> — confirms exactly which properties changed</div>
+            </div>
+          </div>
+          <div class="wf-step wf-step--last">
+            <div class="wf-node wf-node--done"></div>
+            <div class="wf-content">
+              <div class="wf-title">Done</div>
+              <div class="wf-detail">No DevTools. No copy-paste. No back-and-forth.</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Get started -->
@@ -721,6 +1149,18 @@ the button styles aren't applying correctly.</code></pre>
       document.getElementById('panel-' + name).classList.add('active');
     }
 
+    // ─── Action card expand ───
+    function toggleActionCard(header) {
+      const card = header.closest('.ac-card');
+      const isOpen = card.classList.toggle('open');
+      const chevron = header.querySelector('.ac-chevron');
+      const body = card.querySelector('.ac-body');
+      const name = card.querySelector('.ac-name');
+      if (chevron) chevron.classList.toggle('open', isOpen);
+      if (body) body.classList.toggle('open', isOpen);
+      if (name) name.classList.toggle('open', isOpen);
+    }
+
     // ─── Analogy expand ───
     function toggleAnalogy(btn) {
       const extra = document.getElementById('analogy-extra');
@@ -741,8 +1181,8 @@ the button styles aren't applying correctly.</code></pre>
       });
     }
 
-    // Inject copy button into every pre block
-    document.querySelectorAll('pre').forEach(pre => {
+    // Inject copy button into every pre block (skip .no-copy)
+    document.querySelectorAll('pre:not(.no-copy)').forEach(pre => {
       const btn = document.createElement('button');
       btn.className = 'copy-btn';
       btn.textContent = 'copy';
