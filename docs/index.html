@@ -838,7 +838,7 @@
           <span class="ac-chevron">▾</span>
         </div>
         <div class="ac-body">
-          <div class="ac-row"><div class="ac-row-label">Returns</div><div class="ac-row-val">Every matched CSS rule for an element: stylesheet, line number, computed value, and whether it's active or overridden.</div></div>
+          <div class="ac-row"><div class="ac-row-label">Returns</div><div class="ac-row-val">Every matched CSS rule for an element: stylesheet, line number, computed value, and whether it's active or overridden. Also includes layout-critical computed styles from ancestor elements — overflow, sizing, flex context.</div></div>
           <div class="ac-row"><div class="ac-row-label">Use when</div><div class="ac-row-val">A style change isn't showing up. Find out if your rule reached the element and what's overriding it.</div></div>
           <div class="ac-row"><div class="ac-row-label">Example</div><div class="ac-row-val"><code>action: "styles", selector: ".btn-primary", properties: ["color", "background"]</code></div></div>
         </div>

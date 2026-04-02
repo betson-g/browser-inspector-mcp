@@ -296,6 +296,8 @@ This is the fitting room. The AI checks what was actually built before touching 
 
 When a style change isn't showing up, this returns the full CSS cascade for an element: every rule that matched, in order, where it came from (stylesheet + line number), and which properties are active vs overridden.
 
+Also walks up to 4 levels of ancestor elements and returns their layout-critical computed styles — overflow, sizing, flex context. Useful when the constraint isn't on the element itself but on a parent.
+
 The AI can see whether your rule even reached the element, whether something is overriding it, and exactly where the winning rule is defined.
 
 ### `diff` — Confirm a change actually landed
