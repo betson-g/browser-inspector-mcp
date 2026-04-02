@@ -2,9 +2,8 @@ node_modules/
 .DS_Store
 *.log
 
-# Internal — not for public repo
-CLAUDE.md
-sessions.md
-thinking.md
-spec.md
-testing.md
+# Internal — all .md files ignored by default (universal Sandbox rule)
+# Exceptions: README.md (public) and building.md (committed docs)
+*.md
+!README.md
+!building.md
