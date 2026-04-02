@@ -276,6 +276,14 @@ The AI looks at text that appears bold in a screenshot. It assumes `font-weight`
 
 ---
 
+## Works alongside claude --chrome
+
+Anthropic's `claude --chrome` integration lets Claude Code navigate, click, fill forms, and take screenshots in your live browser. browser-inspector-mcp does something different: it reads the CSS cascade — which rule is winning, where it came from, why a style isn't applying.
+
+They're for different jobs. A good workflow: use `claude --chrome` to navigate to the state you want to inspect, then use browser-inspector-mcp to debug the CSS. Neither tool replaces the other.
+
+---
+
 ## One tool, four actions
 
 ### `dom` — See what the browser actually built

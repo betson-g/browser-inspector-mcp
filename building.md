@@ -156,6 +156,8 @@ The true ground truth approach is connecting to the user's *existing* browser ta
 
 ## What's next
 
+- **SSL certificate support** — fixed in v2.0.2. Headless Chrome now accepts self-signed certificates, so local dev setups running over HTTPS (e.g. `https://localhost`) work without any extra configuration.
+- **Ancestor chain analysis** — added in v2.1.0. The `styles` action now walks up to 4 levels up the DOM and returns layout-critical computed styles (overflow, display, sizing, flex context) for each ancestor. Addresses a real debugging pattern: the element looks fine in isolation, but a parent has `overflow: hidden` or `width: 0` constraining it. Validated independently by two external users.
 - **Phase 2 — connect to user's real browser.** Two options: `--remote-debugging-port` (user launches Chrome with a flag) or a browser extension relay (one-time install, then always-on). The extension model is the stronger long-term play.
 - **Live style injection** — AI writes directly to the browser, you see the change instantly, source file only gets touched once the result is confirmed.
 - **Browser extension handoff** — drag-to-select any element in your browser, send the visual + DOM + styles to your AI session in one gesture.

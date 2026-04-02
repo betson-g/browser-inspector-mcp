@@ -47,6 +47,27 @@ export const INSPECT_STYLES_TOOL = {
   },
 };
 
+// Layout-critical properties fetched for ancestor elements.
+// These are the rules that commonly constrain a child — overflow, sizing, flex context.
+const ANCESTOR_COMPUTED_PROPERTIES = [
+  "display",
+  "position",
+  "width",
+  "height",
+  "max-width",
+  "max-height",
+  "overflow",
+  "overflow-x",
+  "overflow-y",
+  "visibility",
+  "opacity",
+  "flex-direction",
+  "align-items",
+  "justify-content",
+  "flex",
+  "transform",
+];
+
 // Computed properties we always return unless caller filters to something specific
 const DEFAULT_COMPUTED_PROPERTIES = [
   "display",
@@ -184,6 +205,35 @@ export async function inspectStyles({ selector, url, viewport, properties }) {
     }
   }
 
+  // Walk up the DOM to collect layout-critical computed styles from ancestor elements.
+  // Uses window.getComputedStyle in-page to avoid CDP selector ambiguity.
+  // Limit: 4 levels up, skipping html/body (rarely the constraint).
+  const ancestors = await page.evaluate((sel, props) => {
+    const el = document.querySelector(sel);
+    if (!el) return [];
+    const results = [];
+    let current = el.parentElement;
+    let depth = 0;
+    while (current && current.tagName && current !== document.documentElement && depth < 4) {
+      const computed = window.getComputedStyle(current);
+      const styles = {};
+      for (const prop of props) {
+        const val = computed.getPropertyValue(prop).trim();
+        if (val) styles[prop] = val;
+      }
+      const tag = current.tagName.toLowerCase();
+      const label = current.id
+        ? `#${current.id}`
+        : current.classList.length
+        ? `${tag}.${current.classList[0]}`
+        : tag;
+      results.push({ label, computed: styles });
+      current = current.parentElement;
+      depth++;
+    }
+    return results;
+  }, selector, ANCESTOR_COMPUTED_PROPERTIES);
+
   return {
     selector,
     found: true,
@@ -191,6 +241,7 @@ export async function inspectStyles({ selector, url, viewport, properties }) {
     computed,
     inlineStyles: inlineProperties.length > 0 ? inlineProperties : null,
     matchedRules,
+    ancestors: ancestors.length > 0 ? ancestors : null,
     note:
       matchedRules.length === 0
         ? "No matched CSS rules found. The element may only have user-agent styles."

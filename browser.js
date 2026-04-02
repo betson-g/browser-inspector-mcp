@@ -31,6 +31,7 @@ export async function getBrowser(url, viewport) {
         args: [
           "--no-sandbox",
           "--disable-setuid-sandbox",
+          "--ignore-certificate-errors",
         ],
       });
 
